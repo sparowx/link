@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <title>𝐂𝐚𝐩𝐭𝐚𝐢𝐧 𝐒𝐩𝐚𝐫𝐨𝐰</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+
+    .video-bg {
+      cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: grayscale(0) sepia(0.1) contrast(1) brightness(1) saturate(120%); /* Old TV Effect */
+    }
+    /* Grain Effect Overlay */
+    .video-bg::after {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Grain_texture.jpg') repeat;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .container {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+
+        .volume-control {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-slider {
+            width: 150px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #555;
+            border-radius: 5px;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #ff4081;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .volume-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+
+
+
+    .dot-overlay {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://assets.guns.lol/guns_dot.png');
+  background-repeat: repeat;
+  background-size: 2px 2px; /* adjust size of each dot tile */
+  z-index: 0; /* behind content, but above video */
+  pointer-events: none;
+  opacity: 1; /* adjust visibility */
+}
+
+    
+    .card:before {
+  display: none;
+}
+
+    .card {
+      cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      background-color: rgba(133, 0, 194, 0.1);
+      background-image: linear-gradient(25deg, rgba(136, 28, 156, 0.1), rgba(13, 13, 13, 0.1));;
+      background-origin: border-box;
+      border-radius: 20px;
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 38px;
+      height: 470px;
+      width: 640px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      will-change: transform, box-shadow;
+    }
+    .avatar {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+   
+    }
+    .avatar2 {
+        
+      margin-top: 20px;
+      cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-left: -500%;
+      margin-top: 5%;
+    }
+
+
+    .title-container {
+    position: relative;
+    z-index: 0; /* টাইটেল কন্টেইনার পিছনে রাখুন */
+}
+    .title {
+    cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+    font-family: 'Satoshi', sans-serif !important;
+    font-size: 39.5px;
+    font-weight: 600;
+    color: white; /* স্পষ্ট টেক্সট রং */
+    text-shadow: 0px 0px 16.5px #FFFFFF;
+    position: relative; /* নতুন লাইন */
+    display: inline-block; /* নতুন লাইন */
+}
+
+.title::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    right: -10px;
+    bottom: -5px;
+    background-image: url('https://assets.guns.lol/sparkle_pink.gif');
+    background-repeat: repeat;
+   
+    z-index: -1; /* টেক্সটের পিছনে রাখুন */
+    opacity: 1;
+}
+
+
+
+    .subtitle {
+      cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      font-family: 'Satoshi', sans-serif !important;
+      font-weight: 570;
+      font-size: 19px;
+      margin-top: 5px;
+      opacity: 0.9;
+    }
+
+
+    .subtitle2 {
+  cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+  font-family: 'Satoshi', sans-serif !important;
+  margin-top: -60px;
+  margin-left: -160px;
+  font-weight: 550;
+  font-size: 17.5px;
+  color:rgba(255, 255, 255, 0.959); /* Text color set to red */
+}
+.subtitle3 {
+  cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+  font-family: 'Satoshi', sans-serif !important;
+  margin-left: 75px;
+  margin-top: 6px;
+  font-weight: 550;
+  font-size: 13.5px;
+  color:rgba(255, 255, 255, 0.651); /* Text color set to red */
+}
+
+
+
+
+
+    .profile-box {
+        
+  cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+  margin-top: 25px;
+  background:  rgba(255, 255, 255, 0.07);
+  border-radius: 25px;
+  padding: 12px;
+  font-size: 14px;
+  margin-left: 55px;
+  height: 100px;
+  width: 450px;
+  border: 2px solid rgba(255, 255, 255, 0.05); /* Adding a border */
+  align-items: center;
+    gap: 10px;
+    justify-content: left;
+    padding: 10px;
+    position: relative;
+    white-space: nowrap;
+}
+
+    /*https://assets.guns.lol/idle.png https://assets.guns.lol/sparkle_pink.gif https://assets.guns.lol/guns_dot.png*/
+    .icons img {
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+.icons img:hover {
+  transform: scale(1.1);
+}
+
+    .icons a {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      margin: 0 10px;
+      font-size: 24px;
+      color: white;
+      text-decoration: none;
+    }
+    .viewer-count {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      margin-top: 10px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+    .audio-btn {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .audio-btn svg {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      width: 30px;
+      height: 30px;
+      fill: white;
+    }
+
+    .glow-button {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      padding: 1px;
+    }
+
+    .glow-button svg {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      width: 40px;
+      height: 40px;
+      color: white;
+      filter: drop-shadow(0 0 8px white);
+      transition: transform 0.2s ease;
+    }
+
+    .glow-button:hover svg {
+      transform: scale(1.2);
+    }
+
+
+
+
+
+
+
+
+
+    .glow-button2 {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      padding: 14px;
+    }
+
+    .glow-button2 svg {
+        cursor: url(https://r2.guns.lol/c96c6341-0d72-4bbf-9a79-d018c507fc9c.cur) 16 16, auto !important;
+      width: 40px;
+      height: 40px;
+      color: rgb(255, 255, 255);
+      filter: drop-shadow(0 0 8px white);
+      transition: transform 0.2s ease;
+    }
+
+    .glow-button2:hover svg {
+      transform: scale(1.2);
+    }
+
+
+
+
+
+
+
+
+
+
+    
+
+  </style>
+</head>
+<body>
+    <div class="dot-overlay"></div>
+
+  <video class="video-bg" autoplay muted loop>
+    <source src="https://r2.guns.lol/64252aec-cdc3-4967-bf2c-fdd59b0f27b0.mp4" type="video/mp4" />
+  </video>
+
+  <button class="audio-btn" id="audioBtn">
+    <svg id="audioIcon" viewBox="0 0 24 24">
+      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+    </svg>
+  </button>
+  <audio id="bgAudio" src="https://cdn.discordapp.com/attachments/1353777154961182731/1374605903474593811/TEENWXVE__chelsy_smile__wxmac_-_MALA_FAMA_EXTENDED.mp3?ex=682ea902&is=682d5782&hm=9f08991c3c6d4c8ecbaaa817c6dd22578f911076c48558d1dc40fc01826c1c0d&"></audio>
+
+  <div class="container">
+    <div class="card"id="interactive-card">
+      <div style="position: relative; display: inline-block;">
+        <img class="avatar" src="https://cdn.discordapp.com/avatars/1048502758745063457/7358e8efb0df96454101c73e087cad51.webp?size=80" alt="Avatar" />
+        <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_670b722e56740d11d1e6fe55b8094013.png"
+             alt="Decoration"
+             style="position: absolute; top:-15px ; left: -15px;; width: 140px; height: 140px; pointer-events: none;" />
+      </div>
+
+
+        <div class="title-container">
+        <h1 class="title">𝐂𝐚𝐩𝐭𝐚𝐢𝐧 𝐒𝐩𝐚𝐫𝐨𝐰</h1>
+        <div class="subtitle">Nothing Is Impossible !</div>
+    </div>
+
+      <div class="profile-box">
+         <div style="position: relative; display: inline-block;">
+        <img class="avatar2" src="https://cdn.discordapp.com/attachments/1353777154961182731/1374568336729571439/sx_store_ahhah.jpg?ex=682e8605&is=682d3485&hm=f0b5985d685c32f75b5e9ff14390604f0de0764f3280f726f0c0faa3a542ce2f&" alt="avatar2" />
+        <img src="https://assets.guns.lol/idle.png"
+             alt="Decoration"
+             style="position: absolute; top:50px ; left: -125px;; width: 18px; height: 18px; pointer-events: none;" />
+      </div>
+      <div class="subtitle2">𝐒𝐩𝐚𝐫𝐨𝐰.𝐱𝐝</div>
+      <div class="subtitle3">𝐅𝐚𝐤𝐞 𝐋𝐚𝐠 𝐗 𝐓𝐞𝐥𝐞𝐊𝐢𝐥𝐥, 𝐒𝐢𝐥𝐞𝐧𝐭 𝐀𝐢𝐦 𝟏𝟎𝟎% 𝐒𝐚𝐟𝐞 𝐀𝐯𝐚𝐢...</div>
+        
+      </div>
+
+       <!-- First button (Double Eyes SVG) -->
+       <button class="glow-button" title="Eyes Icon" onclick="window.open('https://discord.gg/Bv4JjZ5yw2', '_blank')">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1a14.66 14.66 0 0 0-4.58 0a10.14 10.14 0 0 0-.53-1.1a16 16 0 0 0-4.13 1.3a17.33 17.33 0 0 0-3 11.59a16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83a3.39 3.39 0 0 0 .42-.33a11.66 11.66 0 0 0 10.12 0q.21.18.42.33a10.84 10.84 0 0 1-1.71.84a12.41 12.41 0 0 0 1.08 1.78a16.44 16.44 0 0 0 5.06-2.59a17.22 17.22 0 0 0-3-11.59a16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.93 1.93 0 0 1 1.8 2a1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.92 1.92 0 0 1 1.8 2a1.92 1.92 0 0 1-1.8 2z"/>
+    </svg>
+  </button>
+
+  <!-- Second button (Facebook-like Play Icon) -->
+  <button class="glow-button" title="Play Icon" onclick="window.open('https://www.facebook.com/anik.chowdhury.248862', '_blank')">
+    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- White Circle Background -->
+  <circle cx="12" cy="12" r="12" fill="#ffffff"/>
+  
+  <!-- Facebook "f" with color #ad8db8 -->
+  <path fill="#ad8db8" d="M15.12 9.3h-1.32c-.12 0-.36.12-.36.48v1.08h1.68l-.24 1.92h-1.44v5.04H10.8v-5.04H9.36v-1.92h1.44v-1.2c0-1.2.72-1.92 1.92-1.92h1.44v2.04z"/>
+</svg>
+
+
+
+
+  </button>
+      
+	  <!-- Second button (YouTube-like Play Icon) -->
+  <button class="glow-button" title="Play Icon" onclick="window.open('https://www.youtube.com/@syntaxcorporation', '_blank')">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765c1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6l5.207 3.005l-5.212 2.995z"/>
+    </svg>
+  </button>
+  
+  <div style="display: flex; align-items: center;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="2em" viewBox="0 0 24 24" style="margin-right: 5px;">
+        <path fill="currentColor" d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"></path>
+    </svg>
+    <span style="font-weight: 550; font-size: 14px;">130,41</span>
+</div>
+
+    </div>
+  </div>
+ <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script>
+const card = document.getElementById('interactive-card');
+const audio = document.getElementById('bgAudio');
+const audioBtn = document.getElementById('audioBtn');
+const icon = document.getElementById('audioIcon');
+audio.play();
+let playing = true;
+let isMouseOver = false;
+let currentX = 0, currentY = 0, currentScale = 1;
+let targetX = 0, targetY = 0, targetScale = 1;
+
+// Speed factor for faster animation
+const speed = 10;
+
+function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+}
+
+function animateCard() {
+    // Adjust speed calculation to avoid glitch
+    currentX += clamp((targetX - currentX) * speed, -5, 5);
+    currentY += clamp((targetY - currentY) * speed, -5, 5);
+    currentScale += clamp((targetScale - currentScale) * speed, -0.1, 0.1);
+
+    card.style.transform = `perspective(600px) rotateX(${currentY}deg) rotateY(${currentX}deg) scale(${currentScale})`;
+    card.style.boxShadow = `${-currentX}px ${-currentY}px 40px rgba(0, 0, 0, 0.4)`;
+
+    if (isMouseOver || Math.abs(currentX - targetX) > 0.1 || Math.abs(currentY - targetY) > 0.1 || Math.abs(currentScale - targetScale) > 0.01) {
+        requestAnimationFrame(animateCard);
+    }
+}
+
+card.addEventListener('mouseenter', () => {
+    isMouseOver = true;
+    targetScale = 1.03;
+    requestAnimationFrame(animateCard);
+});
+
+card.addEventListener('mousemove', function (e) {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    targetX = (x - centerX) / 25;
+    targetY = -(y - centerY) / 25;
+});
+
+card.addEventListener('mouseleave', function () {
+    targetX = 0;
+    targetY = 0;
+    targetScale = 1;
+    isMouseOver = false;
+   
+    
+    requestAnimationFrame(animateCard);
+});
+
+
+
+
+
+
+
+
+
+    audioBtn.addEventListener('click', () => {
+     
+      if (playing) {
+    audio.play();
+    icon.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M16 10V14H12V10H16M12 4V8H10V6L7 9V5L10 2H12L16 4V8H14V4H12Z" />
+      </svg>
+    `;  // Mute icon
+} else {
+    audio.pause();
+    icon.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M12 3V21C12 21.55 12.45 22 13 22H16C16.55 22 17 21.55 17 21V3C17 2.45 16.55 2 16 2H13C12.45 2 12 2.45 12 3ZM9 5V19C9 19.55 9.45 20 10 20H13C13.55 20 14 19.55 14 19V5C14 4.45 13.55 4 13 4H10C9.45 4 9 4.45 9 5Z" />
+      </svg>
+    `;  // Unmute icon
+}
+
+      playing = !playing;
+    });
+  </script>
+</body>
+</html>
